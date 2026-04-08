@@ -9,10 +9,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout full repo
         uses: actions/checkout@v4
-
-      - name: Run Gitleaks
-        uses: zricethezav/gitleaks-action@v2
         with:
-          args: detect --source . --verbose --redact --exit-code 1
+          fetch-depth: 0   # 👈 IMPORTANT (full history)
+
+      - name: Install Gitleaks
+        run: |
+          wget https://github.com/gitleaks/gitleaks/releases/download/v8.18.0/gitleaks_8.18.0_linux_x64.tar.gz
+          tar -xzf gitleaks_8.18.0_linux_x64.tar.gz
+          chmod +x gitleaks
+
+      - name: Run Gitleaks (FULL SCAN)
+        run: |
+          ./gitleaks detect \
+            --source . \
+            --verbose \
+            --redact \
+            --exit-code 1 \
+            --no-git
