@@ -42,10 +42,10 @@ jobs:
             --json \
             --output=semgrep-report.json || true
 
-       - name: Debug - Show generated files
-         run: |
-          echo "Listing files..."
-          ls -la
+      - name: Debug - Show generated files
+        run: |
+         echo "Listing files..."
+              ls -la
 
       - name: Upload Security Reports
         uses: actions/upload-artifact@v4
