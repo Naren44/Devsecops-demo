@@ -12,5 +12,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Run Gitleaks (Secrets Scan)
-        uses: gitleaks/gitleaks-action@v2
+     - name: Run Gitleaks (Secrets Scan)
+       uses: gitleaks/gitleaks-action@v2
+       with:
+        fail: true
