@@ -42,11 +42,16 @@ jobs:
             --json \
             --output=semgrep-report.json || true
 
-      # 📦 Upload Reports
+       - name: Debug - Show generated files
+         run: |
+          echo "Listing files..."
+          ls -la
+
       - name: Upload Security Reports
         uses: actions/upload-artifact@v4
         with:
           name: security-reports
           path: |
             gitleaks-report.json
+            semgrep-report.json
             semgrep-report.json
