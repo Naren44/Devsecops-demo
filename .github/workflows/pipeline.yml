@@ -19,7 +19,8 @@ jobs:
 
       - name: Install Gitleaks
         run: |
-          wget https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks_linux_x64.tar.gz
+          GITLEAKS_VERSION="15.0.0"
+          wget https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_linux_x64.tar.gz
           tar -xzf gitleaks_linux_x64.tar.gz
           chmod +x gitleaks
 
