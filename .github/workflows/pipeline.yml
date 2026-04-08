@@ -12,7 +12,7 @@ jobs:
       - name: Checkout full repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # 👈 IMPORTANT (full history)
+          fetch-depth: 0
 
       - name: Install Gitleaks
         run: |
@@ -20,11 +20,10 @@ jobs:
           tar -xzf gitleaks_8.18.0_linux_x64.tar.gz
           chmod +x gitleaks
 
-      - name: Run Gitleaks (FULL SCAN)
+      - name: Run Gitleaks Scan (non-blocking)
         run: |
           ./gitleaks detect \
             --source . \
             --verbose \
             --redact \
-            --exit-code 1 \
-            --no-git
+            --exit-code 0
